@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Don’t get greedy, get someone speedy</title>
+<style>
+:root{
+  --bg:#fff4e0; --card:#fffaf0; --ink:#4a0f1c; --muted:#7a3b3b;
+  --red:#b3122e; --green:#14532d; --gold:#d4a017; --saffron:#f28c18; --pink:#c2185b;
+  --shadow:rgba(120,30,30,.28);
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#1d0710; --card:#2c0d18; --ink:#ffe9c2; --muted:#f0c48a;
+    --red:#e0374f; --green:#2f8a55; --shadow:rgba(0,0,0,.6);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#1d0710; --card:#2c0d18; --ink:#ffe9c2; --muted:#f0c48a;
+  --red:#e0374f; --green:#2f8a55; --shadow:rgba(0,0,0,.6);
+}
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{
+  margin:0;min-height:100%;background:var(--bg);color:var(--ink);
+  font-family:"Baloo 2","Trebuchet MS",system-ui,sans-serif;
+  display:flex;align-items:center;justify-content:center;
+  padding:24px 16px;overflow-x:hidden;position:relative;
+  background-image:radial-gradient(circle at 50% 0%,rgba(242,140,24,.25),transparent 55%);
+}
+/* string of lights / diyas along the top */
+.lights{position:fixed;top:0;left:0;right:0;height:46px;display:flex;justify-content:space-around;pointer-events:none;padding-top:env(safe-area-inset-top,0px)}
+.lights span{width:14px;height:14px;border-radius:50%;margin-top:14px;background:var(--gold);box-shadow:0 0 14px 4px var(--gold);animation:glow 2.4s ease-in-out infinite}
+.lights span:nth-child(3n+2){background:var(--red);box-shadow:0 0 14px 4px var(--red);animation-delay:.4s}
+.lights span:nth-child(3n){background:var(--green);box-shadow:0 0 14px 4px var(--green);animation-delay:.8s}
+@keyframes glow{50%{opacity:.45}}
+
+.gift{
+  position:relative;width:100%;max-width:560px;text-align:center;
+  background:var(--card);border:4px solid var(--gold);border-radius:28px;
+  padding:72px 28px 40px;margin-top:40px;
+  box-shadow:0 18px 40px var(--shadow);
+}
+/* gift ribbon: vertical band behind content */
+.gift::before{
+  content:"";position:absolute;top:0;bottom:0;left:50%;width:34px;transform:translateX(-50%);
+  background:repeating-linear-gradient(180deg,var(--red) 0 14px,#8f0e24 14px 16px);
+  opacity:.12;border-radius:6px;z-index:0;
+}
+.gift>*{position:relative;z-index:1}
+/* bow */
+.bow{position:absolute;top:-44px;left:50%;transform:translateX(-50%);width:120px;height:70px;z-index:2}
+.bow i{position:absolute;top:6px;width:54px;height:46px;background:var(--red);border:3px solid #8f0e24}
+.bow i:first-child{left:0;border-radius:60% 10% 60% 60%;transform:rotate(-18deg)}
+.bow i:nth-child(2){right:0;border-radius:10% 60% 60% 60%;transform:rotate(18deg)}
+.bow b{position:absolute;left:50%;top:22px;width:30px;height:30px;margin-left:-15px;border-radius:50%;background:var(--gold);border:3px solid #a97c0a;z-index:3}
+
+.emoji{font-size:30px;letter-spacing:10px;margin-bottom:6px}
+h1{
+  margin:8px 0 10px;font-size:clamp(2rem,8vw,3.3rem);line-height:1.08;font-weight:800;
+  color:var(--red);text-wrap:balance;
+}
+.sub{margin:0 auto 30px;max-width:30ch;color:var(--muted);font-size:1.1rem}
+.rangoli{display:flex;justify-content:center;gap:10px;margin:0 0 30px}
+.rangoli span{width:12px;height:12px;transform:rotate(45deg);background:var(--saffron)}
+.rangoli span:nth-child(even){background:var(--pink)}
+.rangoli span:nth-child(3){background:var(--green);width:16px;height:16px;margin-top:-2px}
+
+.buttons{display:flex;flex-direction:column;gap:14px;align-items:stretch}
+.btn{
+  display:block;padding:16px 22px;border-radius:999px;text-decoration:none;
+  font-weight:800;font-size:1.15rem;color:#fff;border:3px solid var(--gold);
+  box-shadow:0 6px 0 rgba(0,0,0,.25);transition:transform .15s,box-shadow .15s;
+}
+.btn:hover{transform:translateY(2px);box-shadow:0 3px 0 rgba(0,0,0,.25)}
+.btn:focus-visible{outline:4px solid var(--ink);outline-offset:3px}
+.insta{background:linear-gradient(135deg,#c2185b,#f28c18)}
+.web{background:linear-gradient(135deg,#14532d,#2f8a55)}
+@media (min-width:520px){.buttons{flex-direction:row}.btn{flex:1}}
+@media (prefers-reduced-motion:reduce){.lights span{animation:none}.btn{transition:none}}
+</style>
+</head>
+<body>
+<div class="lights" aria-hidden="true">
+  <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+</div>
+
+<main class="gift">
+  <div class="bow" aria-hidden="true"><i></i><i></i><b></b></div>
+  <div class="emoji" aria-hidden="true">🎄🪔🎁</div>
+  <h1>Don’t get greedy, get someone speedy</h1>
+  <p class="sub">A little gift of good advice, wrapped for the festive season.</p>
+  <div class="rangoli" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+  <div class="buttons">
+    <a class="btn insta" href="https://www.instagram.com/" target="_blank" rel="noopener">Visit our Instagram</a>
+    <a class="btn web" href="https://example.com/" target="_blank" rel="noopener">Visit our website</a>
+  </div>
+</main>
+</body>
+</html>
